@@ -13,6 +13,7 @@ const Home = () => {
   useEffect(() => {
     axios('https://62f4c3c7535c0c50e761b9aa.mockapi.io/items').then((res) => setItems(res.data));
     setIsLoading(false);
+    window.scrollTo(0, 0)
   }, []);
   return (
     <>
