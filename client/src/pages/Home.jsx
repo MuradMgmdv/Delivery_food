@@ -14,11 +14,11 @@ const Home = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    const sortBy = sortType.sortProperty.replace('-', '');
     const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
+    const category = categoryId > 0 ? `category=${categoryId}` : '';
     axios(
-      `https://62f4c3c7535c0c50e761b9aa.mockapi.io/items?${
-        categoryId > 0 ? `category=${categoryId}` : ''
-      }&sortBy=${sortType.sortProperty.replace('-', '')}&order=${order}`,
+      `https://62f4c3c7535c0c50e761b9aa.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`,
     ).then((res) => setItems(res.data));
     setIsLoading(false);
     window.scrollTo(0, 0);
