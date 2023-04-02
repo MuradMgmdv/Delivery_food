@@ -4,21 +4,25 @@ import axios from 'axios';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock/PizzaBlock';
-import Skeleton from '../components/PizzaBlock/Skeleton'
+import Skeleton from '../components/PizzaBlock/Skeleton';
 
 const Home = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [categoryId, setCategoryId] = useState(0);
 
   useEffect(() => {
-    axios('https://62f4c3c7535c0c50e761b9aa.mockapi.io/items').then((res) => setItems(res.data));
+    setIsLoading(true);
+    axios(`https://62f4c3c7535c0c50e761b9aa.mockapi.io/items?category=${categoryId}`).then((res) =>
+      setItems(res.data),
+    );
     setIsLoading(false);
-    window.scrollTo(0, 0)
-  }, []);
+    window.scrollTo(0, 0);
+  }, [categoryId]);
   return (
     <>
       <div className="content__top">
-        <Categories />
+        <Categories value={categoryId} onClickCategory={(i) => setCategoryId(i)} />
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
