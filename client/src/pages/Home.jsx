@@ -14,10 +14,11 @@ const Home = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
     axios(
       `https://62f4c3c7535c0c50e761b9aa.mockapi.io/items?${
         categoryId > 0 ? `category=${categoryId}` : ''
-      }&sortBy=${sortType.sortProperty}&order=desc`,
+      }&sortBy=${sortType.sortProperty.replace('-', '')}&order=${order}`,
     ).then((res) => setItems(res.data));
     setIsLoading(false);
     window.scrollTo(0, 0);
