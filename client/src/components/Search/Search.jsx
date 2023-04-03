@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.scss';
 
-const Search = () => {
+const Search = ({ searchValue, setSearchValue }) => {
   return (
     <div className={styles.container}>
       <svg className={styles.container__icon}>
@@ -14,7 +14,12 @@ const Search = () => {
           fill="#000000"
         />
       </svg>
-      <input className={styles.container__text} placeholder="Введите текст..." />
+      <input
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+        className={styles.container__text}
+        placeholder="Введите текст..."
+      />
     </div>
   );
 };
