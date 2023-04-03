@@ -14,7 +14,9 @@ const Search = ({ searchValue, setSearchValue }) => {
           fill="#000000"
         />
       </svg>
-      <svg className={styles.container__clear}
+      <svg
+        className={styles.container__clear}
+        onClick={() => setSearchValue('')}
         width="800px"
         height="800px"
         viewBox="0 0 24 24"
