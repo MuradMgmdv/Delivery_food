@@ -6,17 +6,31 @@
         position: absolute;
         width: 24px;
         height: 24px;
-        left: 2px;
+        left: 10px;
         top: 12px;
         opacity: 0.3;
     }
     &__text {
+        width: 400px;
         font-size: 18px;
         border-radius: 10px;
         padding: 12px 27px;
+        padding-left: 40px;
         border: 1px solid rgba(0, 0, 0, 0.1);
         &:focus {
             border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    }
+    &__clear {
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        right: 2px;
+        top: 8px;
+        opacity: 0.3;
+        &:hover {
+            cursor: pointer;
+            opacity: 0.5;
         }
     }
 }
