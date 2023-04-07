@@ -10,6 +10,7 @@ export const SearchContext = React.createContext();
 
 function App() {
   const [searchValue, setSearchValue] = useState('');
+  
 
   return (
     <div className="wrapper">
