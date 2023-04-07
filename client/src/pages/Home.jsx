@@ -14,10 +14,11 @@ const Home = () => {
   const { searchValue } = useContext(SearchContext);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [sortType, setSortType] = useState({ name: 'популярности', sortProperty: 'rating' });
   const [currentPage, setCurrentPage] = useState(1);
 
   const categoryId = useSelector((state) => state.filter.categoryId);
+  const sortType = useSelector((state) => state.filter.sort);
+
   const dispatch = useDispatch();
 
   function onChangeCategory(id) {
@@ -41,7 +42,7 @@ const Home = () => {
     <>
       <div className="content__top">
         <Categories value={categoryId} onClickCategory={onChangeCategory} />
-        <Sort value={sortType} onClickSelected={(i) => setSortType(i)} />
+        <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
