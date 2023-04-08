@@ -1,10 +1,18 @@
 import React from 'react';
+import { useRef } from 'react';
 import { useContext } from 'react';
 import { SearchContext } from '../../App';
 import styles from './styles.module.scss';
 
 const Search = () => {
-  const { searchValue, setSearchValue} = useContext(SearchContext)
+  const { searchValue, setSearchValue } = useContext(SearchContext);
+  const inputRef = useRef();
+
+  function onClickClear() {
+    setSearchValue('');
+    inputRef.current.focus();
+  }
+
   return (
     <div className={styles.container}>
       <svg className={styles.container__icon}>
@@ -17,30 +25,33 @@ const Search = () => {
           fill="#000000"
         />
       </svg>
-      <svg
-        className={styles.container__clear}
-        onClick={() => setSearchValue('')}
-        width="800px"
-        height="800px"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M8 8L16 16"
-          stroke="#000000"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M16 8L8 16"
-          stroke="#000000"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      {searchValue && (
+        <svg
+          className={styles.container__clear}
+          onClick={onClickClear}
+          width="800px"
+          height="800px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M8 8L16 16"
+            stroke="#000000"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M16 8L8 16"
+            stroke="#000000"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      )}
       <input
+        ref={inputRef}
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         className={styles.container__text}
