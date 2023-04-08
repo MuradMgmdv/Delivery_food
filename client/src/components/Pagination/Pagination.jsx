@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 
 const Pagination = ({ onChangePage }) => {
   return (
-    <div className={styles.root} >
+    <div className={styles.root}>
       <ReactPaginate
         nextLabel=">"
         onPageChange={(event) => onChangePage(event.selected + 1)}
