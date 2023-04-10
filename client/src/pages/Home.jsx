@@ -35,13 +35,13 @@ const Home = () => {
     const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
-
     axios(
       `https://62f4c3c7535c0c50e761b9aa.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,
     ).then((res) => setItems(res.data));
     setIsLoading(false);
     window.scrollTo(0, 0);
   }, [categoryId, sortType, currentPage, searchValue]);
+
   return (
     <>
       <div className="content__top">
