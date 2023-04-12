@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { selectCart } from '../redux/slices/cartSlice';
 import Search from './Search/Search';
 
 function Header() {
-  const totalPrice = useSelector((state) => state.cart.totalPrice);
-  const items = useSelector((state) => state.cart.items);
-  const totalCount = items.reduce((sum, item) => sum + item.count, 0)
+  const { totalPrice, items } = useSelector(selectCart);
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
   return (
     <div className="header">
       <div className="container">
@@ -17,7 +17,7 @@ function Header() {
               <p>самая вкусная пицца</p>
             </div>
           </div>
-        </Link>
+        </Link> 
         <Search />
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">

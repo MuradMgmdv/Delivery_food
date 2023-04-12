@@ -19,9 +19,10 @@ export const filterSlice = createSlice({
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
-  
   },
 });
+
+export const selectSort = (state) => state.filter;
 
 export const { setCategoryId, setSort, setCurrentPage } = filterSlice.actions;
 
