@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const FullPizza: React.FC = () => {
-  const [pizza, setPizza] = useState();
+  const [pizza, setPizza] = useState<{ imageUrl: string; title: string; price: number }>();
   const params = useParams();
   useEffect(() => {
     axios(`https://62f4c3c7535c0c50e761b9aa.mockapi.io/items/${params.id}`).then((res) =>
@@ -14,7 +14,7 @@ const FullPizza: React.FC = () => {
   }, []);
 
   if (!pizza) {
-    return <>'Загрузка...'</>
+    return <>'Загрузка...'</>;
   }
 
   return (
