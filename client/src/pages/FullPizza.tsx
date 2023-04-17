@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-const FullPizza = () => {
+const FullPizza: React.FC = () => {
   const [pizza, setPizza] = useState();
   const params = useParams();
   useEffect(() => {
@@ -14,7 +14,7 @@ const FullPizza = () => {
   }, []);
 
   if (!pizza) {
-    return 'Загрузка...';
+    return <>'Загрузка...'</>
   }
 
   return (
