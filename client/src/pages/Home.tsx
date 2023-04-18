@@ -10,7 +10,7 @@ import { setCategoryId, setCurrentPage } from '../redux/slices/filterSlice';
 import { fetchPizzas } from '../redux/slices/pizzaSlice';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const Home: React.FC = () => {
   const searchValue = useSelector((state) => state.filter.searchValue);
   const categoryId = useSelector((state) => state.filter.categoryId);
   const sortType = useSelector((state) => state.filter.sort);
@@ -20,11 +20,11 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  function onChangeCategory(id) {
+  function onChangeCategory(id: number) {
     dispatch(setCategoryId(id));
   }
 
-  const onChangePage = (number) => {
+  const onChangePage = (number: number) => {
     dispatch(setCurrentPage(number));
   };
 
@@ -35,6 +35,7 @@ const Home = () => {
     const search = searchValue ? `&search=${searchValue}` : '';
 
     dispatch(
+      // @ts-ignore
       fetchPizzas({
         sortBy,
         order,
@@ -64,7 +65,7 @@ const Home = () => {
         <div className="content__items">
           {status === 'loading'
             ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-            : items.map((obj) => (
+            : items.map((obj: any) => (
                 <Link key={obj.id} to={`/pizza/${obj.id}`}>
                   <PizzaBlock {...obj} />
                 </Link>
