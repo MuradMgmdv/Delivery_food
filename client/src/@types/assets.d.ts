@@ -12,3 +12,8 @@ declare module "*.svg" {
     const value: any;
     export default value;
   }
+
+  declare module "*lodash.debounce" {
+    const value: any;
+    export default value;
+  }
