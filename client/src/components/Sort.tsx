@@ -22,7 +22,7 @@ const Sort: React.FC = () => {
   const dispatch = useDispatch();
   const { sort } = useSelector(selectSort);
   const [open, setOpen] = useState(false);
-  const sortRef = useRef();
+  const sortRef = useRef<HTMLDivElement>(null);
 
   function onClickListItem(obj: SortItem) {
     dispatch(setSort(obj));
