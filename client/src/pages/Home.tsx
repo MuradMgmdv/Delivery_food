@@ -9,14 +9,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCategoryId, setCurrentPage } from '../redux/slices/filterSlice';
 import { fetchPizzas } from '../redux/slices/pizzaSlice';
 import { Link } from 'react-router-dom';
+import { RootState } from '../redux/store';
 
 const Home: React.FC = () => {
-  const searchValue = useSelector((state) => state.filter.searchValue);
-  const categoryId = useSelector((state) => state.filter.categoryId);
-  const sortType = useSelector((state) => state.filter.sort);
-  const currentPage = useSelector((state) => state.filter.currentPage);
-  const items = useSelector((state) => state.pizza.items);
-  const status = useSelector((state) => state.pizza.status);
+  const searchValue = useSelector((state: RootState) => state.filter.searchValue);
+  const categoryId = useSelector((state: RootState) => state.filter.categoryId);
+  const sortType = useSelector((state: RootState) => state.filter.sort);
+  const currentPage = useSelector((state: RootState) => state.filter.currentPage);
+  const items = useSelector((state: RootState) => state.pizza.items);
+  const status = useSelector((state: RootState) => state.pizza.status);
 
   const dispatch = useDispatch();
 
