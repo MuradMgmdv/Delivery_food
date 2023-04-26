@@ -5,11 +5,11 @@ import Sort from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination/Pagination';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { setCategoryId, setCurrentPage } from '../redux/slices/filterSlice';
 import { fetchPizzas } from '../redux/slices/pizzaSlice';
 import { Link } from 'react-router-dom';
-import { RootState } from '../redux/store';
+import { RootState, useAppDispatch } from '../redux/store';
 
 const Home: React.FC = () => {
   const searchValue = useSelector((state: RootState) => state.filter.searchValue);
@@ -19,7 +19,7 @@ const Home: React.FC = () => {
   const items = useSelector((state: RootState) => state.pizza.items);
   const status = useSelector((state: RootState) => state.pizza.status);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   function onChangeCategory(id: number) {
     dispatch(setCategoryId(id));
@@ -36,13 +36,12 @@ const Home: React.FC = () => {
     const search = searchValue ? `&search=${searchValue}` : '';
 
     dispatch(
-      // @ts-ignore
       fetchPizzas({
         sortBy,
         order,
         category,
         search,
-        currentPage,
+        currentPage: String(currentPage),
       }),
     );
     window.scrollTo(0, 0);
