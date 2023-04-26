@@ -8,7 +8,6 @@ import Pagination from '../components/Pagination/Pagination';
 import { useSelector } from 'react-redux';
 import { setCategoryId, setCurrentPage } from '../redux/slices/filterSlice';
 import { fetchPizzas } from '../redux/slices/pizzaSlice';
-import { Link } from 'react-router-dom';
 import { RootState, useAppDispatch } from '../redux/store';
 
 const Home: React.FC = () => {
@@ -65,11 +64,7 @@ const Home: React.FC = () => {
         <div className="content__items">
           {status === 'loading'
             ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-            : items.map((obj: any) => (
-                <Link key={obj.id} to={`/pizza/${obj.id}`}>
-                  <PizzaBlock {...obj} />
-                </Link>
-              ))}
+            : items.map((obj: any) => <PizzaBlock key={obj.id} {...obj} />)}
         </div>
       )}
 
