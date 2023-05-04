@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { selectCart } from '../redux/slices/cartSlice';
 import Search from './Search/Search';
 
-const Header: React.FC = () =>  {
+const Header: React.FC = () => {
   const location = useLocation();
   const { totalPrice, items } = useSelector(selectCart);
   const totalCount = items.reduce((sum: number, item: any) => sum + item.count, 0);
@@ -19,7 +19,7 @@ const Header: React.FC = () =>  {
             </div>
           </div>
         </Link>
-        <Search />
+        {location.pathname !== '/cart' && <Search />}
         <div className="header__cart">
           {location.pathname !== '/cart' && (
             <Link to="/cart" className="button button--cart">
@@ -60,6 +60,6 @@ const Header: React.FC = () =>  {
       </div>
     </div>
   );
-}
+};
 
 export default Header;
