@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
@@ -20,9 +20,9 @@ const Home: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
-  function onChangeCategory(id: number) {
+  const onChangeCategory = useCallback((id: number) => {
     dispatch(setCategoryId(id));
-  }
+  }, []);
 
   const onChangePage = (number: number) => {
     dispatch(setCurrentPage(number));
